@@ -14,6 +14,7 @@ jobs:
 
       - name: Run tests
         run: |
+          mkdir -p build
           set -o pipefail
           xcodebuild test \
             -workspace KeepingYouAwake.xcworkspace \
@@ -29,6 +30,7 @@ jobs:
 
       - name: Build Release (unsigned)
         run: |
+          mkdir -p build
           set -o pipefail
           xcodebuild build \
             -workspace KeepingYouAwake.xcworkspace \
