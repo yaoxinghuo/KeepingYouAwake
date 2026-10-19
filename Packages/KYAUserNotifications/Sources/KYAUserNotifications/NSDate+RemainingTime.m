@@ -17,7 +17,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         dateFormatter = [NSDateComponentsFormatter new];
-        dateFormatter.allowedUnits = NSCalendarUnitSecond | NSCalendarUnitMinute | NSCalendarUnitHour;
+        dateFormatter.allowedUnits = NSCalendarUnitMinute | NSCalendarUnitHour;
         dateFormatter.unitsStyle = NSDateComponentsFormatterUnitsStyleShort;
         dateFormatter.includesTimeRemainingPhrase = YES;
     });
