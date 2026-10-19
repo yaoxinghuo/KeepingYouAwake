@@ -1,0 +1,54 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - personal
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run tests
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -workspace KeepingYouAwake.xcworkspace \
+            -scheme KeepingYouAwake \
+            -derivedDataPath build/DerivedData \
+            CODE_SIGNING_ALLOWED=NO \
+            2>&1 | tee build/test.log
+
+  dist:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Release (unsigned)
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -workspace KeepingYouAwake.xcworkspace \
+            -scheme "KeepingYouAwake (Direct)" \
+            -configuration Release \
+            -derivedDataPath build/DerivedData \
+            CODE_SIGNING_ALLOWED=NO \
+            2>&1 | tee build/build.log
+
+      - name: Ad-hoc sign and archive
+        run: |
+          APP="build/DerivedData/Build/Products/Release/KeepingYouAwake.app"
+          codesign --force --deep --sign - "$APP"
+          codesign --verify --verbose "$APP"
+          VERSION=$(awk -F' = ' '/MARKETING_VERSION/{print $2}' Configuration.xcconfig | tr -d ' ')
+          mkdir -p dist
+          ditto -c -k --sequesterRsrc --keepParent "$APP" "dist/KeepingYouAwake-${VERSION}.zip"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: KeepingYouAwake
+          path: dist/KeepingYouAwake-*.zip
+          if-no-files-found: error
