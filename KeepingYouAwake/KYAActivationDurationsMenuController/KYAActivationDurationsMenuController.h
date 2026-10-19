@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <KYAUserNotifications/KYAUserNotifications.h>
 #import <KYAActivationDurations/KYAActivationDurations.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -59,14 +58,6 @@ NS_ASSUME_NONNULL_BEGIN
  @return An activation duration or nil of none is active
  */
 - (nullable KYAActivationDuration *)currentActivationDuration;
-
-/**
- Returns the fire date of the currently selected activation duration.
-
- @param controller The delegating menu controller
- @return A fire date or nil of none is active
- */
-- (nullable NSDate *)fireDateForMenuController:(KYAActivationDurationsMenuController *)controller;
 
 /**
  Tells the receiver that the user selected an activation duration from the menu.

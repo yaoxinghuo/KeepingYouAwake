@@ -2214,10 +2214,38 @@
       }
     },
     "Until %@" : {
-      "comment" : "Until %@"
+      "comment" : "Until %@",
+      "localizations" : {
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "直到%@"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "直到%@"
+          }
+        }
+      }
     },
     "Until…" : {
-      "comment" : "Until…"
+      "comment" : "Until…",
+      "localizations" : {
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "直到..."
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "直到⋯"
+          }
+        }
+      }
     },
     "Version" : {
       "comment" : "Version",

@@ -11,7 +11,6 @@
 #import "KYALocalizedStrings.h"
 #import "KYAActivationDuration+KYALocalizedTitle.h"
 
-static const NSInteger KYAMenuItemRemainingTimeTag = 666;
 static const CGFloat KYAMenuItemDefaultFontSize = 14.0f;
 
 @interface KYAActivationDurationsMenuController ()
@@ -104,37 +103,6 @@ static const CGFloat KYAMenuItemDefaultFontSize = 14.0f;
     return NSColor.secondaryLabelColor;
 }
 
-- (nullable NSMenuItem *)menuItemForRemainingTime
-{
-    Auto delegate = self.delegate;
-    if(![delegate respondsToSelector:@selector(fireDateForMenuController:)]) { return nil; }
-    
-    Auto fireDate = [delegate fireDateForMenuController:self];
-    if(fireDate == nil) { return nil; }
-    
-    Auto menuItem = [[NSMenuItem alloc] initWithTitle:fireDate.kya_localizedRemainingTime
-                                               action:nil
-                                        keyEquivalent:@""];
-    menuItem.tag = KYAMenuItemRemainingTimeTag;
-    return menuItem;
-}
-
-// TODO: Use this for live updates of the menu item
-- (void)updateRemainingTime:(id)sender
-{
-    Auto delegate = self.delegate;
-    if(![delegate respondsToSelector:@selector(fireDateForMenuController:)]) { return; }
-    
-    Auto fireDate = [delegate fireDateForMenuController:self];
-    if(fireDate == nil) { return; }
-    
-    Auto menuItem = self.menu.itemArray.firstObject;
-    if(menuItem != nil && menuItem.tag == KYAMenuItemRemainingTimeTag)
-    {
-        menuItem.title = fireDate.kya_localizedRemainingTime;
-    }
-}
-
 #pragma mark - NSMenuDelegate
 
 - (void)menuNeedsUpdate:(NSMenu *)menu
@@ -142,13 +110,6 @@ static const CGFloat KYAMenuItemDefaultFontSize = 14.0f;
     [menu removeAllItems];
     
     Auto controller = self.activationDurationsController;
-    
-    Auto remainingTimeMenuItem = [self menuItemForRemainingTime];
-    if(remainingTimeMenuItem != nil)
-    {
-        [menu addItem:remainingTimeMenuItem];
-        [menu addItem:NSMenuItem.separatorItem];
-    }
     
     BOOL didAddClockTimeSeparator = NO;
     for(KYAActivationDuration *duration in controller.activationDurations)

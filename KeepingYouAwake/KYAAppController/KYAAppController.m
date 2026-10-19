@@ -8,6 +8,7 @@
 
 #import "KYAAppController.h"
 #import <KYACommon/KYACommon.h>
+#import <KYAUserNotifications/KYAUserNotifications.h>
 #import "KYALocalizedStrings.h"
 #import "KYAMainMenu.h"
 #import "KYABatteryCapacityThreshold.h"
@@ -40,6 +41,7 @@
 // Menu
 @property (nonatomic) NSMenu *menu;
 @property (nonatomic, weak, nullable) NSMenuItem *toggleActivationMenuItem;
+@property (nonatomic, weak, nullable) NSMenuItem *remainingTimeMenuItem;
 @end
 
 @implementation KYAAppController
@@ -108,12 +110,38 @@
     [menu insertItem:NSMenuItem.separatorItem atIndex:1];
     self.toggleActivationMenuItem = toggleItem;
     
+    Auto remainingItem = [[NSMenuItem alloc] initWithTitle:@""
+                                                    action:nil
+                                             keyEquivalent:@""];
+    remainingItem.hidden = YES;
+    [menu insertItem:remainingItem atIndex:2];
+    self.remainingTimeMenuItem = remainingItem;
+    
     self.menu = menu;
 }
 
 - (IBAction)toggleActivation:(nullable id)sender
 {
     [self statusItemControllerShouldPerformPrimaryAction:self.statusItemController];
+}
+
+- (nullable NSString *)remainingTimeMenuItemTitle
+{
+    Auto fireDate = self.sleepWakeTimer.fireDate;
+    if(fireDate == nil) { return nil; }
+    
+    static dispatch_once_t onceToken;
+    static NSDateFormatter *timeFormatter;
+    dispatch_once(&onceToken, ^{
+        timeFormatter = [NSDateFormatter new];
+        timeFormatter.dateStyle = NSDateFormatterNoStyle;
+        timeFormatter.timeStyle = NSDateFormatterShortStyle;
+    });
+    
+    Auto endTime = [timeFormatter stringFromDate:fireDate];
+    return [NSString stringWithFormat:@"%@ · %@",
+            fireDate.kya_localizedRemainingTime,
+            KYA_L10N_UNTIL_CLOCK_TIME(endTime)];
 }
 
 - (void)showActivateUntilDatePanel
@@ -559,10 +587,19 @@
 
 - (NSMenu *)menuForStatusItemController:(KYAStatusItemController *)controller
 {
-    // Update the toggle item's title right before the menu is displayed.
+    // Update the dynamic menu items right before the menu is displayed.
     self.toggleActivationMenuItem.title = [self.sleepWakeTimer isScheduled]
         ? KYA_L10N_DEACTIVATE
         : KYA_L10N_ACTIVATE;
+    
+    Auto remainingItem = self.remainingTimeMenuItem;
+    Auto remainingTitle = [self remainingTimeMenuItemTitle];
+    if(remainingTitle != nil)
+    {
+        remainingItem.title = remainingTitle;
+    }
+    remainingItem.hidden = (remainingTitle == nil);
+    
     return self.menu;
 }
 
@@ -612,11 +649,6 @@
 - (void)activationDurationsMenuControllerDidRequestUntilDate:(KYAActivationDurationsMenuController *)controller
 {
     [self showActivateUntilDatePanel];
-}
-
-- (NSDate *)fireDateForMenuController:(KYAActivationDurationsMenuController *)controller
-{
-    return self.sleepWakeTimer.fireDate;
 }
 
 #pragma mark - KYASleepWakeTimerDelegate
