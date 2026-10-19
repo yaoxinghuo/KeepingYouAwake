@@ -21,6 +21,7 @@
 #define KYA_L10N_ACTIVATE_UNTIL_DATE_TITLE NSLocalizedString(@"Activate Until Date", @"Activate Until Date")
 #define KYA_L10N_KEEP_AWAKE_UNTIL NSLocalizedString(@"Keep awake until:", @"Keep awake until:")
 #define KYA_L10N_ACTIVATE NSLocalizedString(@"Activate", @"Activate")
+#define KYA_L10N_DEACTIVATE NSLocalizedString(@"Deactivate", @"Deactivate")
 #define KYA_L10N_DATE_MUST_BE_IN_THE_FUTURE NSLocalizedString(@"Please choose a date and time in the future.", @"Please choose a date and time in the future.")
 #define KYA_L10N_SETTINGS_ELLIPSIS NSLocalizedString(@"Settings…", @"Settings…")
 #define KYA_L10N_QUIT NSLocalizedString(@"Quit", @"Quit")

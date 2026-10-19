@@ -39,6 +39,7 @@
 
 // Menu
 @property (nonatomic) NSMenu *menu;
+@property (nonatomic, weak, nullable) NSMenuItem *toggleActivationMenuItem;
 @end
 
 @implementation KYAAppController
@@ -93,7 +94,26 @@
     menuController.delegate = self;
     self.menuController = menuController;
     
-    self.menu = KYACreateMainMenuWithActivationDurationsSubMenu(menuController.menu);
+    Auto menu = KYACreateMainMenuWithActivationDurationsSubMenu(menuController.menu);
+    
+    Auto toggleItem = [[NSMenuItem alloc] initWithTitle:KYA_L10N_ACTIVATE
+                                                 action:@selector(toggleActivation:)
+                                          keyEquivalent:@""];
+    if(@available(macOS 26.0, *))
+    {
+        toggleItem.image = [NSImage imageWithSystemSymbolName:@"power" accessibilityDescription:nil];
+    }
+    toggleItem.target = self;
+    [menu insertItem:toggleItem atIndex:0];
+    [menu insertItem:NSMenuItem.separatorItem atIndex:1];
+    self.toggleActivationMenuItem = toggleItem;
+    
+    self.menu = menu;
+}
+
+- (IBAction)toggleActivation:(nullable id)sender
+{
+    [self statusItemControllerShouldPerformPrimaryAction:self.statusItemController];
 }
 
 - (void)showActivateUntilDatePanel
@@ -539,6 +559,10 @@
 
 - (NSMenu *)menuForStatusItemController:(KYAStatusItemController *)controller
 {
+    // Update the toggle item's title right before the menu is displayed.
+    self.toggleActivationMenuItem.title = [self.sleepWakeTimer isScheduled]
+        ? KYA_L10N_DEACTIVATE
+        : KYA_L10N_ACTIVATE;
     return self.menu;
 }
 

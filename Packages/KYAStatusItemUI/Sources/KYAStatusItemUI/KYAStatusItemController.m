@@ -46,7 +46,7 @@
     
     [button sendActionOn:NSEventMaskLeftMouseUp|NSEventMaskRightMouseUp];
     button.target = self;
-    button.action = @selector(toggleStatus:);
+    button.action = @selector(showMenu:);
     
 #if DEBUG
     button.contentTintColor = NSColor.systemBlueColor;
@@ -58,23 +58,9 @@
     self.appearance = KYAStatusItemAppearanceInactive;
 }
 
-- (void)toggleStatus:(id)sender
+- (void)showMenu:(id)sender
 {
-    Auto delegate = self.delegate;
-    Auto event = NSApplication.sharedApplication.currentEvent;
-    
-    if((event.modifierFlags & NSEventModifierFlagControl)   // ctrl click
-       || (event.modifierFlags & NSEventModifierFlagOption) // alt click
-       || (event.type == NSEventTypeRightMouseUp))          // right click
-    {
-        [self showMenuFromDataSource];
-        return;
-    }
-    
-    if([delegate respondsToSelector:@selector(statusItemControllerShouldPerformPrimaryAction:)])
-    {
-        [delegate statusItemControllerShouldPerformPrimaryAction:self];
-    }
+    [self showMenuFromDataSource];
 }
 
 #pragma mark - Appearance
@@ -95,13 +81,12 @@
     if(appearance == KYAStatusItemAppearanceActive)
     {
         button.image = imageProvider.activeIconImage;
-        button.toolTip = KYA_L10N_CLICK_TO_ALLOW_SLEEP;
     }
     else
     {
         button.image = imageProvider.inactiveIconImage;
-        button.toolTip = KYA_L10N_CLICK_TO_PREVENT_SLEEP;
     }
+    button.toolTip = KYA_L10N_CLICK_TO_SHOW_MENU;
     
     [self didChangeValueForKey:@"appearance"];
 }

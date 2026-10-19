@@ -103,7 +103,21 @@
       }
     },
     "Activate" : {
-      "comment" : "Activate"
+      "comment" : "Activate",
+      "localizations" : {
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "激活"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "斟滿"
+          }
+        }
+      }
     },
     "Activate for Duration" : {
       "comment" : "Activate for Duration",
@@ -708,266 +722,37 @@
         }
       }
     },
-    "Click to allow sleep\nRight click to show menu" : {
-      "comment" : "Click to allow sleep\\nRight click to show menu",
+    "Click to show menu" : {
+      "comment" : "Click to show menu",
       "extractionState" : "manual",
       "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klik for at tillade vågeblus\nHøjreklik for at vise menu"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klicken, um den Ruhezustand zu erlauben\nRechtsklick, um das Menü anzuzeigen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Κλικ για αδράνεια\nΔεξί κλικ για μενού"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Haz clic para permitir el reposo\nHaz clic derecho para mostrar el menú"
-          }
-        },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klikkaa salliakseen lepotila\nOikea klikkaus näyttääksesi valikon"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cliquer pour autoriser la veille\nClic droit pour le menu"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "स्लीप की अनुमति देने के लिए क्लिक करें\nमेनू दिखाने के लिए राइट क्लिक करें"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klik untuk membolehkan mode tidur\nKlik kanan untuk menampilkan menu"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clicca per consentire lo stop\nTasto destro per mostrare il menu"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "クリックでスリープを有効にする\n右クリックでメニューを表示"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "잠자기를 허용하려면 클릭\n메뉴를 보려면 오른쪽 클릭"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klik om de sluimerstand toe te staan\nRechtsklik om het menu te tonen"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kliknij aby zezwolić na uśpienie Kliknij prawym aby pokazać menu"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clique para permitir o computador hibernar\nClique com o botão direito para exibir o menu"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нажмите чтобы разрешить спящий режим\nЩелчок правой кнопкой откроет меню"
-          }
-        },
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kliknutím umožníte spánok\nPravým kliknutím zobrazíte menu"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uyku moduna izin vermek için sağ menüye tıklayın"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Лівий клік щоб дозволити сон\nПравий клік для меню"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bấm để cho phép ngủ\nChuột phải để mở menu"
-          }
-        },
         "zh" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "点按以允许进入睡眠模式 右击以显示菜单"
+            "value" : "点按以显示菜单"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "點一下允許系統進入睡眠狀態\n使用輔助按鈕（右鍵）顯示選單"
+            "value" : "點一下顯示選單"
           }
         }
       }
     },
-    "Click to prevent sleep\nRight click to show menu" : {
-      "comment" : "Click to prevent sleep\\nRight click to show menu",
-      "extractionState" : "manual",
+    "Deactivate" : {
+      "comment" : "Deactivate",
       "localizations" : {
-        "da" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klik for at forhindre vågeblus\nHøjreklik for at vise menu"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klicken, um den Ruhezustand zu verhindern\nRechtsklick, um das Menü anzuzeigen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Κλικ για αποτροπή αδράνειας\nΔεξί κλικ για μενού"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Haz clic para evitar el reposo\nHaz clic derecho para mostrar el menú"
-          }
-        },
-        "fi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klikkaa estääksesi lepotila\nOikea klikkaus näyttääksesi valikon"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cliquer pour empêcher la veille\nClic droit pour le menu"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "स्लीप रोकने के लिए क्लिक करें\nमेनू दिखाने के लिए राइट क्लिक करें"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klik untuk mencegah mode tidur\nKlik kanan untuk menampilkan menu"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clicca per prevenire lo stop\nTasto destro per mostrare il menu"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "クリックでスリープを無効にする\n右クリックでメニューを表示する"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "잠자기를 비활성화하려면 클릭\n메뉴를 보려면 오른쪽 클릭"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klik om de sluimerstand te verhinderen\nRechtsklik om het menu te tonen"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kliknij aby zapobiegać uśpieniu Kliknij prawym aby pokazać menu"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clique para não deixar o Mac hibernar\nClique com o botão direito para exibir o menu"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Нажмите чтобы предотвратить спящий режим\nЩелчок правой кнопкой откроет меню"
-          }
-        },
-        "sk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kliknutím zabránite spánku\nPravým kliknutím zobrazíte menu"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Uyku moduna geçmeyi önleme menüsünü göstermek için sağdaki düğmeye tıklayın"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Лівий клік щоб заборонити сон\nПравий клік для меню"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bấm để chặn ngủ\nChuột phải để mở menu"
-          }
-        },
         "zh" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "点按以防止进入睡眠模式 右击以显示菜单"
+            "value" : "停用"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "點一下防止系統進入睡眠狀態\n使用輔助按鈕（右鍵）顯示選單"
+            "value" : "清空"
           }
         }
       }
